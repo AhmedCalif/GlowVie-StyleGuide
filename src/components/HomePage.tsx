@@ -80,7 +80,7 @@ export function HomePage() {
             >
               <LogoSVG />
             </motion.div>
-            <span className="font-bold text-xl text-[#D6EAF8]">Self Care</span>
+            <span className="font-bold text-xl text-[#D6EAF8]">GlowVie</span>
           </Link>
           
           <div className="flex-wrap gap-8 hidden md:flex">
@@ -141,14 +141,14 @@ export function HomePage() {
               variants={itemVariants}
             >
               <span className="text-[#0E233B]">Welcome to the </span>
-              <span className="text-[#0E233B]">SelfCare </span>
+              <span className="text-[#0E233B]">GlowVie </span>
               <span className="text-[#0E233B] block md:inline">Style Guide</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-[#0E233B] leading-relaxed"
               variants={itemVariants}
             >
-              Discover our design language, principles, and resources that shape Self Care.
+              Discover our design language, principles, and resources that shape GlowVie.
             </motion.p>
             <motion.div 
               className="flex gap-4 justify-center md:justify-start"
