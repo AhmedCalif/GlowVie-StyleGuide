@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Footer } from "./Footer";
 
 export function Typography() {
   const navItems = [
@@ -35,9 +36,8 @@ export function Typography() {
     { level: "Heading 5", use: "Minor headings", example: "Small Section" }
   ];
 
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
       <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm fixed w-full z-50 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
@@ -61,76 +61,83 @@ export function Typography() {
           </div>
         </div>
       </nav>
-    <main className="container mx-auto px-4 pt-32 pb-20">
-      <div className="max-w-6xl mx-auto flex flex-col gap-12">
-        <div className="space-y-6 text-center md:text-left">
-          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Fonts</h2>
-          <p className="text-[#0E233B] text-2xl">
-            For GlowVie we are going to use the Comfortaa Font. Comfortaa is a modern and easy to use font that represents
-            our brand aesthethics
-          </p>
-        </div>
 
-        <div className="bg-white/80 rounded-xl p-8 shadow-lg backdrop-blur-sm">
-          <div className="space-y-6 mb-12">
-            <h3 className="text-2xl font-bold text-[#0E233B] mb-8">Font Weights</h3>
-            {fontSamples.map((sample, index) => (
-              <div 
-                key={index}
-                className="group hover:bg-[#D6EAF8]/20 p-4 rounded-lg transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-[#0E233B]/60">{sample.text}</span>
-                  <span className="text-sm text-[#0E233B]/60">{sample.weight}</span>
-                </div>
-                <p 
-                  className="text-4xl text-[#0E233B] transition-all duration-300 group-hover:tracking-wide"
-                  style={{ 
-                    fontFamily: 'Comfortaa',
-                    fontWeight: sample.weight,
-                  }}
-                >
-                  {sample.sample}
-                </p>
-              </div>
-            ))}
+      <main className="container mx-auto px-4 pt-32 pb-20 flex-grow">
+        <div className="max-w-6xl mx-auto flex flex-col gap-12">
+          <div className="space-y-6 text-center md:text-left">
+            <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Fonts</h2>
+            <p className="text-[#0E233B] text-2xl">
+              For GlowVie we are going to use the Comfortaa Font. Comfortaa is a modern and easy to use font that represents
+              our brand aesthethics
+            </p>
           </div>
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-[#0E233B] mb-8">Headings</h3>
-            <div className="space-y-8">
-              {headingSamples.map((heading, index) => (
+
+          <div className="bg-white/80 rounded-xl p-8 shadow-lg backdrop-blur-sm">
+            <div className="space-y-6 mb-12">
+              <h3 className="text-2xl font-bold text-[#0E233B] mb-8">Font Weights</h3>
+              {fontSamples.map((sample, index) => (
                 <div 
                   key={index}
                   className="group hover:bg-[#D6EAF8]/20 p-4 rounded-lg transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-[#0E233B]/60">{heading.level}</span>
-                    <span className="text-sm text-[#0E233B]/60">{heading.use}</span>
+                    <span className="text-sm text-[#0E233B]/60">{sample.text}</span>
+                    <span className="text-sm text-[#0E233B]/60">{sample.weight}</span>
                   </div>
-                  <p className="text-[#0E233B] font-comfortaa">
-                    {heading.example}
+                  <p 
+                    className="text-4xl text-[#0E233B] transition-all duration-300 group-hover:tracking-wide"
+                    style={{ 
+                      fontFamily: 'Comfortaa',
+                      fontWeight: sample.weight,
+                    }}
+                  >
+                    {sample.sample}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 bg-[#D6EAF8]/20 rounded-lg text-center">
-              <p className="font-comfortaa text-3xl mb-2">Aa</p>
-              <span className="text-sm text-[#0E233B]/60">Clean</span>
+
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-[#0E233B] mb-8">Headings</h3>
+              <div className="space-y-8">
+                {headingSamples.map((heading, index) => (
+                  <div 
+                    key={index}
+                    className="group hover:bg-[#D6EAF8]/20 p-4 rounded-lg transition-all duration-300"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm text-[#0E233B]/60">{heading.level}</span>
+                      <span className="text-sm text-[#0E233B]/60">{heading.use}</span>
+                    </div>
+                    <p className="text-[#0E233B] font-comfortaa">
+                      {heading.example}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="p-4 bg-[#D6EAF8]/20 rounded-lg text-center">
-              <p className="font-comfortaa text-3xl mb-2">Oo</p>
-              <span className="text-sm text-[#0E233B]/60">Modern</span>
-            </div>
-            <div className="p-4 bg-[#D6EAF8]/20 rounded-lg text-center">
-              <p className="font-comfortaa text-3xl mb-2">Gg</p>
-              <span className="text-sm text-[#0E233B]/60">Friendly</span>
+
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 bg-[#D6EAF8]/20 rounded-lg text-center">
+                <p className="font-comfortaa text-3xl mb-2">Aa</p>
+                <span className="text-sm text-[#0E233B]/60">Clean</span>
+              </div>
+              <div className="p-4 bg-[#D6EAF8]/20 rounded-lg text-center">
+                <p className="font-comfortaa text-3xl mb-2">Oo</p>
+                <span className="text-sm text-[#0E233B]/60">Modern</span>
+              </div>
+              <div className="p-4 bg-[#D6EAF8]/20 rounded-lg text-center">
+                <p className="font-comfortaa text-3xl mb-2">Gg</p>
+                <span className="text-sm text-[#0E233B]/60">Friendly</span>
+              </div>
             </div>
           </div>
         </div>
+      </main>
+
+      <div className="mt-auto">
+        <Footer />
       </div>
-    </main>
     </div>
   );
 }
