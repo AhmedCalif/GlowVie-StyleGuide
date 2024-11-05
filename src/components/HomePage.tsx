@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export function HomePage() {
   const navItems = [
@@ -19,45 +20,6 @@ export function HomePage() {
             fill="#D6EAF8" stroke="#E6E1F3" strokeWidth="3"/>
       <circle cx="75" cy="75" r="5" fill="#D4EFDF"/>
       <circle cx="125" cy="75" r="5" fill="#D4EFDF"/>
-    </svg>
-  );
-
-const GirlMascotSVG = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" className="w-full h-full">
-    <circle cx="100" cy="80" r="40" fill="#FFE0C2"/>
-    <path d="M60 60 C70 40, 130 40, 140 60" fill="#4B3A28"/>
-    <path d="M80 40 C85 20, 115 20, 120 40" fill="#4B3A28"/>
-    <line x1="85" y1="75" x2="95" y2="75" stroke="black" strokeWidth="2"/>
-    <line x1="105" y1="75" x2="115" y2="75" stroke="black" strokeWidth="2"/>
-    <path d="M90 85 C95 95 105 95 110 85" fill="none" stroke="black" strokeWidth="2"/>
-    <path d="M70 120 L130 120 L140 240 L60 240 Z" fill="#D6EAF8"/>
-    <rect x="50" y="120" width="20" height="60" rx="10" fill="#FFE0C2"/>
-    <rect x="130" y="120" width="20" height="60" rx="10" fill="#FFE0C2"/>
-    <rect x="70" y="240" width="20" height="40" fill="#FFE0C2"/>
-    <rect x="110" y="240" width="20" height="40" fill="#FFE0C2"/>
-    <circle cx="100" cy="110" r="3" fill="#FF69B4"/>
-  </svg>
-);
- 
-
-  const BoyMascotSVG = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" className="w-full h-full">
-      <circle cx="100" cy="90" r="50" fill="#8B5E3C"/>
-      <path d="M60 60 C60 40 80 30 100 30 C120 30 140 40 140 60 C140 40 120 20 100 20 C80 20 60 40 60 60" 
-            fill="#000000"/>
-      <path d="M60 50 C60 80 140 80 140 50 C140 90 60 90 60 50" fill="#000000"/>
-      <circle cx="100" cy="95" r="40" fill="#8B5E3C"/>
-      <circle cx="85" cy="85" r="8" fill="#FFFFFF"/>
-      <circle cx="115" cy="85" r="8" fill="#FFFFFF"/>
-      <circle cx="85" cy="85" r="4" fill="#000000"/>
-      <circle cx="115" cy="85" r="4" fill="#000000"/>
-      <circle cx="100" cy="110" r="10" fill="#000000"/>
-      <rect x="70" y="140" width="60" height="60" fill="#FFFFFF"/>
-      <rect x="70" y="200" width="60" height="40" fill="#000000"/>
-      <rect x="50" y="145" width="20" height="40" rx="10" fill="#8B5E3C"/>
-      <rect x="130" y="145" width="20" height="40" rx="10" fill="#8B5E3C"/>
-      <rect x="75" y="240" width="20" height="20" fill="#000000"/>
-      <rect x="105" y="240" width="20" height="20" fill="#000000"/>
     </svg>
   );
 
@@ -121,7 +83,7 @@ const GirlMascotSVG = () => (
             <span className="font-bold text-xl text-[#D6EAF8]">Self Care</span>
           </Link>
           
-          <div className="flex gap-8">
+          <div className="flex-wrap gap-8 hidden md:flex">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.href}
@@ -160,7 +122,14 @@ const GirlMascotSVG = () => (
             animate="animate"
           >
             <div className="absolute inset-0 bg-[#E6E1F3] rounded-full blur-2xl opacity-20"></div>
-            <BoyMascotSVG />
+            <Image 
+              src="/boy-svgrepo-com.svg" 
+              alt="Boy mascot" 
+              width={240}
+              height={320}
+              priority
+              className="mt-10"
+            />
           </motion.div>
 
           <motion.div 
@@ -168,19 +137,18 @@ const GirlMascotSVG = () => (
             variants={containerVariants}
           >
             <motion.h1 
-              className="text-6xl font-bold leading-tight"
+              className="text-4xl md:text-6xl font-bold leading-tight"
               variants={itemVariants}
             >
               <span className="text-[#0E233B]">Welcome to the </span>
               <span className="text-[#0E233B]">SelfCare </span>
-              <br />
-              <span className="text-[#0E233B]">Style Guide</span>
+              <span className="text-[#0E233B] block md:inline">Style Guide</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-[#0E233B] leading-relaxed"
               variants={itemVariants}
             >
-              Your comprehensive guide to the visual and stylistic elements that shape the Self Care experience. Discover our design language, principles, and resources.
+              Discover our design language, principles, and resources that shape Self Care.
             </motion.p>
             <motion.div 
               className="flex gap-4 justify-center md:justify-start"
@@ -191,21 +159,10 @@ const GirlMascotSVG = () => (
                 whileTap={{ scale: 0.95 }}
               >
                 <Link 
-                  href="/getting-started"
+                  href="/logo"
                   className="px-6 py-3 bg-[#0E233B] text-[#D6EAF8] rounded-lg hover:bg-[#0E233B]/90 transition-colors shadow-lg shadow-[#E6E1F3]"
                 >
-                  Get Started
-                </Link>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link 
-                  href="/components"
-                  className="px-6 py-3 bg-[#D6EAF8] text-[#0E233B] rounded-lg hover:bg-[#E6E1F3] transition-colors shadow-lg shadow-[#E6E1F3]"
-                >
-                  View Components
+                  View StyleGuide
                 </Link>
               </motion.div>
             </motion.div>
@@ -217,7 +174,14 @@ const GirlMascotSVG = () => (
             animate="animate"
           >
             <div className="absolute inset-0 bg-[#E6E1F3] rounded-full blur-2xl opacity-20"></div>
-            <GirlMascotSVG />
+            <Image 
+              src="/girl-svgrepo-com.svg" 
+              alt="Girl mascot" 
+              width={240}
+              height={320}
+              priority
+              className="mt-10"
+            />
           </motion.div>
         </motion.div>
       </main>
@@ -256,4 +220,3 @@ const GirlMascotSVG = () => (
     </motion.div>
   );
 }
-
