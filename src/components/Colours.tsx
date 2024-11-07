@@ -97,7 +97,9 @@ export function Colours() {
             ))}
           </div>
           <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Colour Accessibility</h2>
-
+          <p className="text-[#0E233B] text-l">
+                Our colour contrast is tested by both a figma plugin, and from the website Coolors.
+            </p>
           {/* Accessibility Comparison Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contrastImages.map((item, index) => (
@@ -108,6 +110,9 @@ export function Colours() {
             ))}
           </div>
           <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Examples</h2>
+          <p className="text-[#0E233B] text-l">
+                Examples of how the colour palette is applied to our app.
+            </p>
         </div>
       </main>
 
