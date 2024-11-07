@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Footer } from "./Footer";
-import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 export function Logo() {
   const navItems = [
@@ -11,56 +12,84 @@ export function Logo() {
     { href: "/references", label: "References" },
   ];
 
+  const LogoSVG = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+      className="w-full h-full"
+    >
+      <circle cx="100" cy="100" r="90" fill="#0E233B" />
+      <path
+        d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z"
+        fill="#D6EAF8"
+        stroke="#E6E1F3"
+        strokeWidth="3"
+      />
+      <circle cx="75" cy="75" r="5" fill="#D4EFDF" />
+      <circle cx="125" cy="75" r="5" fill="#D4EFDF" />
+    </svg>
+  );
+
   const logoVariants = [
     {
-      label: "Full Colour Logo",
+      label: "Full Colour Logo/Stacked",
       description: "Icon + Wordmark",
-      image: "/full-color-logo.svg",
+      imageUrl: "/full-color-logo.svg",
     },
     {
       label: "Reversed Logo",
       description: "Icon + Wordmark",
-      image: "/reverse-color-logo.svg",
+      imageUrl: "/reverse-color-logo.svg",
     },
     {
       label: "Greyscale Logo",
       description: "Icon + Wordmark",
-      image: "/greyscale-logo.svg",
+      imageUrl: "/greyscale-logo.svg",
     },
     {
       label: "Monochromatic Logo",
       description: "Icon + Wordmark",
-      image: "/monochromatic-logo.svg",
+      imageUrl: "/monochromatic-logo.svg",
     },
     {
-      label: "Horizontal Version of Full Colour Logo",
-      description: "Icon + Wordmark",
-      image: "/horizontal-logo.svg",
-    },
-    {
-      label: "Stacked Version of Full Colour Logo",
-      description: "Icon + Wordmark",
-      image: "path/to/stacked-full-color-logo.png",
+      label: "Horizontal Logo",
+      description: "Horizontal layout",
+      imageUrl: "/horizontal-logo.svg",
+      span: true,
     },
   ];
 
-  const faviconSizes = [
-    { size: "16x16px", image: "path/to/favicon-16.png" },
-    { size: "32x32px", image: "path/to/favicon-32.png" },
-    { size: "48x48px", image: "path/to/favicon-48.png" },
-  ];
-
-  const colorPalette = [
-    { name: "Primary Color", hex: "#0E233B" },
-    { name: "Accent Color", hex: "#D6EAF8" },
-    { name: "Secondary Color", hex: "#E6E1F3" },
-    { name: "Highlight Color", hex: "#FF8833" },
-    { name: "Background Color", hex: "#FFFFFF" },
-  ];
+  const LogoCard = ({
+    label,
+    description,
+    imageUrl,
+    span = false,
+  }: {
+    label: string;
+    description: string;
+    imageUrl: string;
+    span?: boolean;
+  }) => (
+    <div
+      className={`bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow ${
+        span ? "md:col-span-2" : ""
+      }`}
+    >
+      <Image
+        src={imageUrl}
+        alt={label}
+        width={120}
+        height={120}
+        className="w-full h-auto mb-3"
+      />
+      <h4 className="font-comfortaa font-semibold">{label}</h4>
+      <p className="text-sm text-gray-600">{description}</p>
+    </div>
+  );
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
-      <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm fixed w-full z-50 shadow-sm">
+    <div className="min-h-screen flex flex-col">
+      <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm sticky top-0 w-full z-50 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10">
@@ -88,92 +117,49 @@ export function Logo() {
         </div>
       </nav>
 
-      <main className="container mx-auto px-4 pt-32 pb-20 flex-grow">
-        <div className="max-w-6xl mx-auto flex flex-col gap-12">
-          <section className="space-y-8">
-            <h2 className="md:text-3xl font-bold text-[#0E233B]">
-              Logo Design
-            </h2>
-            <p className="text-lg text-[#0E233B]">
-              The GlowVie logo combines a symbol and wordmark to convey a
-              modern, friendly identity. The design choices in shape and font
-              reflect the brand's values, ensuring adaptability for different
-              sizes while maintaining clear spacing.
-            </p>
-            {logoVariants.map((variant, index) => (
-              <div
-                key={index}
-                className="group hover:bg-[#D6EAF8]/20 p-4 rounded-lg transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-[#0E233B]/60">
-                    {variant.label}
-                  </span>
-                  <span className="text-sm text-[#0E233B]/60">
-                    {variant.description}
-                  </span>
-                </div>
-                <img
-                  src={variant.image}
-                  alt={variant.label}
-                  style={{
-                    width:
-                      variant.label === "Horizontal Version of Full Colour Logo"
-                        ? "300px"
-                        : "120px",
-                    height: "auto",
-                  }}
-                  className="w-full h-auto rounded-lg"
-                />
-              </div>
-            ))}
-
-            {/* <h3 className="text-2xl font-bold text-[#0E233B] mt-12">
-              Favicon Variations
-            </h3>
-            <div className="space-y-4">
-              {faviconSizes.map((favicon, index) => (
-                <div
-                  key={index}
-                  className="group hover:bg-[#D6EAF8]/20 p-4 rounded-lg transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-[#0E233B]/60">
-                      Favicon {favicon.size}
-                    </span>
-                  </div>
-                  <img
-                    src={favicon.image}
-                    alt={`Favicon ${favicon.size}`}
-                    className="w-full h-auto rounded-lg"
-                  />
-                </div>
-              ))}
-            </div> */}
-          </section>
-
-          {/* <section className="space-y-8 ">
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold text-[#0E233B]">
-                Button Variations
-              </h3>
-              <div className="flex flex-col space-y-4 mt-4">
-                <button className="bg-[#FF8833] text-white font-bold py-2 px-4 rounded-lg">
-                  Primary Button
-                </button>
-                <button className="bg-[#E6E1F3] text-[#0E233B] font-bold py-2 px-4 rounded-lg">
-                  Secondary Button
-                </button>
-                <button className="bg-transparent border-2 border-[#0E233B] text-[#0E233B] font-bold py-2 px-4 rounded-lg">
-                  Outlined Button
-                </button>
-              </div>
+      <div className="flex-grow flex flex-col bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
+        <main className="container mx-auto px-4 py-8 flex-grow">
+          <div className="max-w-6xl mx-auto flex flex-col gap-12">
+            <div className="space-y-6 text-center md:text-left">
+              <h2 className="md:text-3xl font-bold text-[#0E233B]">
+                Logo Design
+              </h2>
+              <p className="text-[#0E233B] text-lg">
+                The GlowVie logo combines a symbol and wordmark to convey a
+                modern, friendly identity. The design choices in shape and font
+                reflect the brand's values, ensuring adaptability for different
+                sizes and layouts.
+              </p>
             </div>
-          </section> */}
-        </div>
-      </main>
 
-      <Footer />
+            <Card className="border-2 border-[#D6EAF8] mb-12">
+              <CardContent className="pt-6">
+                <h3 className="text-xl font-comfortaa font-bold text-[#0E233B] mb-6">
+                  Logo Variations
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {logoVariants.map((variant, index) => (
+                    <LogoCard key={index} {...variant} />
+                  ))}
+                </div>
+                <div className="mt-8 space-y-4 mb-10">
+                  <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">
+                    Design Choices
+                  </h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>High contrast icons for better visibility</li>
+                    <li>Consistent sizing for clarity and brand alignment</li>
+                    <li>Rounded corners for a softer, approachable feel</li>
+                    <li>Subtle shadows for depth without distraction</li>
+                    <li>Clear labels for accessibility</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
