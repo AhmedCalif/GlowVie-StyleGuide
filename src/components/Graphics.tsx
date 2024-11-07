@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Camera, Shield, Heart, Bell, Calendar, MessageSquare, type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Footer } from "./Footer";
 
 export function Graphics() {
   const navItems = [
@@ -23,20 +24,47 @@ export function Graphics() {
 
   const iconGroups = [
     {
-      title: "Communication",
+      title: "Icons",
       icons: [
         { icon: MessageSquare, label: "Messages", description: "User communication" },
         { icon: Bell, label: "Notifications", description: "Important updates" },
         { icon: Calendar, label: "Calendar", description: "Event scheduling" },
       ]
     },
-    {
-      title: "Support & Safety",
+     {
+      title: "Buttons",
       icons: [
-        { icon: Shield, label: "Security", description: "Protected information" },
-        { icon: Heart, label: "Wellbeing", description: "Health tracking" },
-        { icon: Camera, label: "Media", description: "Photo sharing" },
+        { icon: MessageSquare, label: "Messages", description: "User communication" },
+        { icon: Bell, label: "Notifications", description: "Important updates" },
+        { icon: Calendar, label: "Calendar", description: "Event scheduling" },
       ]
+    }
+  ];
+
+  const brandPhotos = [
+    {
+      title: "Casual Blue",
+      description: "Model wearing our signature navy blue casual wear",
+      imageUrl: "/api/placeholder/600/400",
+      accent: "#0E233B"
+    },
+    {
+      title: "Sky Essence",
+      description: "Street style featuring our sky blue palette",
+      imageUrl: "/api/placeholder/600/400",
+      accent: "#D6EAF8"
+    },
+    {
+      title: "Mint Harmony",
+      description: "Active wear in our refreshing mint tone",
+      imageUrl: "/api/placeholder/600/400",
+      accent: "#D4EFDF"
+    },
+    {
+      title: "Lavender Dreams",
+      description: "Evening wear showcasing our lavender accent",
+      imageUrl: "/api/placeholder/600/400",
+      accent: "#E6E1F3"
     }
   ];
 
@@ -50,9 +78,29 @@ export function Graphics() {
     </div>
   );
 
-  return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
-      <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm fixed w-full z-50 shadow-sm">
+  const PhotoCard = ({ title, description, imageUrl, accent }: {title: string, description: string, imageUrl: string, accent: string}) => (
+    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+      <div className="relative aspect-[3/2] overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="object-cover w-full h-full"
+        />
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{ backgroundColor: accent }}
+        />
+      </div>
+      <div className="p-4">
+        <h4 className="font-comfortaa font-semibold text-lg mb-2">{title}</h4>
+        <p className="text-gray-600 text-sm">{description}</p>
+      </div>
+    </div>
+  );
+
+ return (
+    <div className="min-h-screen flex flex-col">
+      <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm sticky top-0 w-full z-50 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10">
@@ -76,44 +124,64 @@ export function Graphics() {
         </div>
       </nav>
 
-      <main className="container mx-auto px-4 pt-32 pb-20 flex-grow">
-        <div className="max-w-6xl mx-auto flex flex-col gap-12">
-          <div className="space-y-6 text-center md:text-left">
-            <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Graphics</h2>
-            <p className="text-[#0E233B] text-2xl font-comfortaa">
-              For the Graphics, we wanted to showcase some icons and imagery we are going to use for GlowVie. 
-            </p>
-          </div>
+      <div className="flex-grow flex flex-col bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
+        <main className="container mx-auto px-4 py-8 flex-grow">
+          <div className="max-w-6xl mx-auto flex flex-col gap-12">
+            <div className="space-y-6 text-center md:text-left">
+              <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Graphics</h2>
+              <p className="text-[#0E233B] text-2xl font-comfortaa">
+                For the Graphics, we wanted to showcase some icons/buttons and imagery we are going to use for GlowVie. 
+              </p>
+            </div>
 
-          <Card className="border-2 border-[#D6EAF8]">
-            <CardContent className="pt-6">
-              {iconGroups.map((group, idx) => (
-                <div key={group.title} className={`mb-8 ${idx !== 0 ? 'mt-12' : ''}`}>
-                  <h3 className="text-xl font-comfortaa font-bold text-[#0E233B] mb-6">
-                    {group.title}
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {group.icons.map((icon, index) => (
-                      <IconCard key={index} {...icon} />
+            <Card className="border-2 border-[#D6EAF8]">
+              <CardContent className="pt-6">
+                {iconGroups.map((group, idx) => (
+                  <div key={group.title} className={`mb-8 ${idx !== 0 ? 'mt-12' : ''}`}>
+                    <h3 className="text-xl font-comfortaa font-bold text-[#0E233B] mb-6">
+                      {group.title}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {group.icons.map((icon, index) => (
+                        <IconCard key={index} {...icon} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+
+                <div className="mt-8 space-y-4">
+                  <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">Design Choices</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>High contrast icons for better visibility</li>
+                    <li>Consistent 24px sizing for clear recognition</li>
+                    <li>Rounded corners matching our brand style</li>
+                    <li>Soft shadows for subtle depth</li>
+                    <li>Descriptive labels for accessibility</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-[#D6EAF8]">
+              <CardContent className="pt-6">
+                <div className="space-y-6">
+                  <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">Imagery</h3>
+                  <p className="text-gray-700">
+                    Our brand's imagery showcases the versatility of our color palette in real-world applications,
+                    demonstrating how our carefully selected colors complement various styles and occasions.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {brandPhotos.map((photo, index) => (
+                      <PhotoCard key={index} {...photo} />
                     ))}
                   </div>
                 </div>
-              ))}
-
-              <div className="mt-8 space-y-4">
-                <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">Design Choices</h3>
-                <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                  <li>High contrast icons for better visibility</li>
-                  <li>Consistent 24px sizing for clear recognition</li>
-                  <li>Rounded corners matching our brand style</li>
-                  <li>Soft shadows for subtle depth</li>
-                  <li>Descriptive labels for accessibility</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </main>
+              </CardContent>
+            </Card>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
