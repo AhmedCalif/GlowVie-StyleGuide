@@ -3,6 +3,8 @@ import { Bell, Calendar, MessageSquare, type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Footer } from "./Footer";
 import Image from "next/image";
+import React from "react";
+import { HomePageIcon, ProgressIcon, MascotIcon } from "./CustomSvgs";
 
 export function Graphics() {
   const navItems = [
@@ -23,25 +25,15 @@ export function Graphics() {
     </svg>
   );
 
-  const homePageIcon = () => {
-    return (
-      <Image
-      src={"/homepagelogo.svg"}
-      alt="HomePage logo"
-      width={100}
-      height={100}>
-
-      </Image>
-    )
-  }
+  
 
   const iconGroups = [
     {
       title: "Icons",
       icons: [
-        { icon: MessageSquare, label: "homepage icon", description: "To naviagte to the homepage" },
-        { icon: Bell, label: "Notifications", description: "Important updates" },
-        { icon: Calendar, label: "Calendar", description: "Event scheduling" },
+        { icon: HomePageIcon, label: "HomePage Icon", description: "For Navigation to Homepage" },
+        { icon: ProgressIcon, label: "Progress Icon", description: "To showcase the users progress in their self development" },
+        { icon: MascotIcon, label: "Mascot Icon", description: "Mascot Icon" },
       ]
     },
      {
@@ -81,10 +73,10 @@ export function Graphics() {
     }
   ]; 
 
-  const IconCard = ({ icon: Icon, label, description }: { icon: LucideIcon, label: string, description: string }) => (
+  const IconCard = ({ icon: Icon, label, description }: { icon: React.FC, label: string, description: string }) => (
     <div className="bg-white/90 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
       <div className="bg-[#D6EAF8] p-3 rounded-full w-fit mb-3">
-        <Icon className="w-6 h-6 text-[#0E233B]" />
+        <Icon/>
       </div>
       <h4 className="font-comfortaa font-semibold mb-1">{label}</h4>
       <p className="text-sm text-gray-600">{description}</p>
