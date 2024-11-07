@@ -33,32 +33,21 @@ export function Graphics() {
     </svg>
   );
 
-  const homePageIcon = () => {
-    return (
-      <Image
-        src={"/homepagelogo.svg"}
-        alt="HomePage logo"
-        width={100}
-        height={100}
-      ></Image>
-    );
-  };
-
   const iconGroups = [
     {
       title: "Icons",
       icons: [
         {
-          icon: MessageSquare,
-          label: "homepage icon",
-          description: "To naviagte to the homepage",
+          icon: HomePageIcon,
+          label: "Homepage Icon",
+          description: "To navigate to the homepage",
         },
         {
-          icon: Bell,
-          label: "Notifications",
-          description: "Important updates",
+          icon: ProgressIcon,
+          label: "Progress Icon",
+          description: "Progress Tracking",
         },
-        { icon: Calendar, label: "Calendar", description: "Event scheduling" },
+        { icon: MascotIcon, label: "Mascot Icon", description: "For Mascot page" },
       ],
     },
     {
@@ -111,7 +100,7 @@ export function Graphics() {
     label,
     description,
   }: {
-    icon: LucideIcon;
+    icon: React.FC;
     label: string;
     description: string;
   }) => (
