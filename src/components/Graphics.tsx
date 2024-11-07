@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Camera, Shield, Heart, Bell, Calendar, MessageSquare, type LucideIcon } from 'lucide-react';
+import { Bell, Calendar, MessageSquare, type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Footer } from "./Footer";
+import Image from "next/image";
 
 export function Graphics() {
   const navItems = [
@@ -22,11 +23,23 @@ export function Graphics() {
     </svg>
   );
 
+  const homePageIcon = () => {
+    return (
+      <Image
+      src={"/homepagelogo.svg"}
+      alt="HomePage logo"
+      width={100}
+      height={100}>
+
+      </Image>
+    )
+  }
+
   const iconGroups = [
     {
       title: "Icons",
       icons: [
-        { icon: MessageSquare, label: "Messages", description: "User communication" },
+        { icon: MessageSquare, label: "homepage icon", description: "To naviagte to the homepage" },
         { icon: Bell, label: "Notifications", description: "Important updates" },
         { icon: Calendar, label: "Calendar", description: "Event scheduling" },
       ]
@@ -66,7 +79,7 @@ export function Graphics() {
       imageUrl: "/api/placeholder/600/400",
       accent: "#E6E1F3"
     }
-  ];
+  ]; 
 
   const IconCard = ({ icon: Icon, label, description }: { icon: LucideIcon, label: string, description: string }) => (
     <div className="bg-white/90 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
