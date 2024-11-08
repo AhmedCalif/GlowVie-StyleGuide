@@ -5,6 +5,9 @@ import { Footer } from "./Footer";
 import Image from "next/image";
 import React from "react";
 import { HomePageIcon, ProgressIcon, MascotIcon } from "./CustomSvgs";
+import { Button, buttonVariants } from "./ui/button";
+
+
 
 export function Graphics() {
   const navItems = [
@@ -50,50 +53,34 @@ export function Graphics() {
         { icon: MascotIcon, label: "Mascot Icon", description: "For Mascot page" },
       ],
     },
-    {
-      title: "Buttons",
-      icons: [
-        {
-          icon: MessageSquare,
-          label: "Messages",
-          description: "User communication",
-        },
-        {
-          icon: Bell,
-          label: "Notifications",
-          description: "Important updates",
-        },
-        { icon: Calendar, label: "Calendar", description: "Event scheduling" },
-      ],
-    },
   ];
 
-  const brandPhotos = [
-    {
-      title: "Casual Blue",
-      description: "Model wearing our signature navy blue casual wear",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#0E233B",
-    },
-    {
-      title: "Sky Essence",
-      description: "Street style featuring our sky blue palette",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#D6EAF8",
-    },
-    {
-      title: "Mint Harmony",
-      description: "Active wear in our refreshing mint tone",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#D4EFDF",
-    },
-    {
-      title: "Lavender Dreams",
-      description: "Evening wear showcasing our lavender accent",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#E6E1F3",
-    },
-  ];
+  const imageryGuidelines = [
+  {
+    title: "Deep Navy",
+    description: "Evening skies and deep water scenes that anchor our visuals",
+    imageUrl: "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7",
+    accent: "#0E233B"
+  },
+  {
+    title: "Sky Blue",
+    description: "Daytime skies and serene water reflections",
+    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    accent: "#D6EAF8"
+  },
+  {
+    title: "Soft Lavender",
+    description: "Dawn/dusk scenes and gentle floral elements",
+    imageUrl: "https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0",
+    accent: "#E6E1F3"
+  },
+  {
+    title: "Mint Green",
+    description: "Fresh foliage and botanical subjects",
+    imageUrl: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+    accent: "#D4EFDF"
+  }
+];
 
   const IconCard = ({
     icon: Icon,
@@ -199,10 +186,17 @@ export function Graphics() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {group.icons.map((icon, index) => (
                         <IconCard key={index} {...icon} />
-                      ))}
+                      ))} 
                     </div>
                   </div>
                 ))}
+
+
+                <h2 className="text-2xl 'font-comfortaa font-semibold mb-1 ">Buttons</h2>
+                 <p className=" font-comfortaa text-gray-800"> 
+                  For our app, this button will be the main button style to naviagte, and do something with, This button will have multiple colors symbolozing the CTA a user needs to do to navigate through our app
+                 </p>
+                 <Button variant="secondary" className="rounded-full bg-black text-white hover:bg-gray-800 mt-4">Button</Button>
 
                 <div className="mt-8 space-y-4">
                   <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">
@@ -232,7 +226,7 @@ export function Graphics() {
                     occasions.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {brandPhotos.map((photo, index) => (
+                    {imageryGuidelines.map((photo, index) => (
                       <PhotoCard key={index} {...photo} />
                     ))}
                   </div>
@@ -246,3 +240,4 @@ export function Graphics() {
     </div>
   );
 }
+
