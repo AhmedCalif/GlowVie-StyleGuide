@@ -9,20 +9,28 @@ import skyComparison from "./images/sky_comparison.png";
 
 export function Colours() {
   const navItems = [
-    { href: '/logo', label: 'Logo' },
-    { href: '/colours', label: 'Colours' },
-    { href: '/typography', label: 'Typography' },
-    { href: '/graphics', label: 'Graphics' },
-    { href: '/references', label: 'References' }
+    { href: "/logo", label: "Logo" },
+    { href: "/colours", label: "Colours" },
+    { href: "/typography", label: "Typography" },
+    { href: "/graphics", label: "Graphics" },
+    { href: "/references", label: "References" },
   ];
 
   const LogoSVG = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" className="w-full h-full">
-      <circle cx="100" cy="100" r="90" fill="#0E233B"/>
-      <path d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z" 
-            fill="#D6EAF8" stroke="#E6E1F3" strokeWidth="3"/>
-      <circle cx="75" cy="75" r="5" fill="#D4EFDF"/>
-      <circle cx="125" cy="75" r="5" fill="#D4EFDF"/>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+      className="w-full h-full"
+    >
+      <circle cx="100" cy="100" r="90" fill="#0E233B" />
+      <path
+        d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z"
+        fill="#D6EAF8"
+        stroke="#E6E1F3"
+        strokeWidth="3"
+      />
+      <circle cx="75" cy="75" r="5" fill="#D4EFDF" />
+      <circle cx="125" cy="75" r="5" fill="#D4EFDF" />
     </svg>
   );
 
@@ -30,7 +38,7 @@ export function Colours() {
     { name: "Navy Blue", hex: "#0E233B" },
     { name: "Light Sky", hex: "#D6EAF8" },
     { name: "Lavender", hex: "#E6E1F3" },
-    { name: "Mint Green", hex: "#D4EFDF" }
+    { name: "Mint Green", hex: "#D4EFDF" },
   ];
 
   const contrastImages = [
@@ -54,11 +62,15 @@ export function Colours() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10">
-              <LogoSVG />
+              <img
+                src="/glowLogo.svg"
+                alt="GlowVie Logo"
+                className="w-full h-auto rounded-lg"
+              />
             </div>
             <span className="font-bold text-xl text-[#D6EAF8]">GlowVie</span>
           </Link>
-          
+
           <div className="flex-wrap gap-8 hidden md:flex">
             {navItems.map((item) => (
               <div key={item.href}>
@@ -77,13 +89,23 @@ export function Colours() {
       <main className="container mx-auto px-4 pt-32 pb-20 flex-grow">
         <div className="max-w-6xl mx-auto flex flex-col gap-12">
           <div className="space-y-6 text-center md:text-left">
-            <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Colours</h2>
+            <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">
+              Colours
+            </h2>
             <p className="text-[#0E233B] text-2xl">
-              We chose our colors with the goal of creating a calm and soothing environment for the app. 
-              The primary color was selected for its gentle, relaxing qualities, while the accent colors were picked to complement and enhance the overall aesthetic. Warm and cool tones were balanced to provide a sense of tranquility and positivity, ensuring the palette feels both inviting and nurturing, perfect for a self-care experience. The overall goal was to evoke feelings of comfort and well-being through thoughtful color choices.
+              We chose our colors with the goal of creating a calm and soothing
+              environment for the app. The primary color was selected for its
+              gentle, relaxing qualities, while the accent colors were picked to
+              complement and enhance the overall aesthetic. Warm and cool tones
+              were balanced to provide a sense of tranquility and positivity,
+              ensuring the palette feels both inviting and nurturing, perfect
+              for a self-care experience. The overall goal was to evoke feelings
+              of comfort and well-being through thoughtful color choices.
             </p>
           </div>
-          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Palette</h2>
+          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">
+            Palette
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {colors.map((color) => (
               <div key={color.hex} className="text-center">
@@ -91,28 +113,42 @@ export function Colours() {
                   className="w-full h-64 rounded-md shadow-md"
                   style={{ backgroundColor: color.hex }}
                 ></div>
-                <p className="mt-4 font-bold text-lg text-[#0E233B]">{color.name}</p>
+                <p className="mt-4 font-bold text-lg text-[#0E233B]">
+                  {color.name}
+                </p>
                 <p className="text-[#0E233B]">{color.hex}</p>
               </div>
             ))}
           </div>
-          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Colour Accessibility</h2>
+          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">
+            Colour Accessibility
+          </h2>
           <p className="text-[#0E233B] text-l">
-                Our colour contrast is tested by both a figma plugin, and from the website Coolors.
-            </p>
+            Our colour contrast is tested by both a figma plugin, and from the
+            website Coolors.
+          </p>
           {/* Accessibility Comparison Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contrastImages.map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center space-y-4">
-                <Image src={item.img} alt={`Contrast test ${index + 1}`} className="rounded-md shadow-md" />
+              <div
+                key={index}
+                className="flex flex-col items-center text-center space-y-4"
+              >
+                <Image
+                  src={item.img}
+                  alt={`Contrast test ${index + 1}`}
+                  className="rounded-md shadow-md"
+                />
                 <p className="text-[#0E233B] text-base">{item.text}</p>
               </div>
             ))}
           </div>
-          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">Examples</h2>
+          <h2 className="md:text-3xl font-bold text-[#0E233B] inset-x-px">
+            Examples
+          </h2>
           <p className="text-[#0E233B] text-l">
-                Examples of how the colour palette is applied to our app.
-            </p>
+            Examples of how the colour palette is applied to our app.
+          </p>
         </div>
       </main>
 
