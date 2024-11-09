@@ -54,33 +54,89 @@ export function Graphics() {
       ],
     },
   ];
-
-  const imageryGuidelines = [
+const imageryGuidelines = [
   {
-    title: "Deep Navy",
-    description: "Evening skies and deep water scenes that anchor our visuals",
-    imageUrl: "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7",
+    title: "Deep Navy (#0E233B)",
+    description: "Rich, deep navy conveying authority and depth",
+    images: [
+      {
+        url: "https://savviformalwear.com/wp-content/uploads/2019/03/indigo_wedding_suit-1-scaled.jpg",
+        alt: "Deep navy blue abstract texture"
+      }
+    ],
     accent: "#0E233B"
   },
   {
-    title: "Sky Blue",
-    description: "Daytime skies and serene water reflections",
-    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    title: "Columbia Blue (#D6EAF8)",
+    description: "Pure, ethereal columbia blue expressing clarity",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+        alt: "Clear sky with soft Columbia blue tones"
+      }
+    ],
     accent: "#D6EAF8"
   },
   {
-    title: "Soft Lavender",
-    description: "Dawn/dusk scenes and gentle floral elements",
-    imageUrl: "https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0",
+    title: "Soft Lavender (#E6E1F3)",
+    description: "Delicate lavender shade embodying tranquility",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1531870970999-0f1234e4e549",
+        alt: "Soft lavender flowers in bloom"
+      }
+    ],
     accent: "#E6E1F3"
   },
   {
-    title: "Mint Green",
-    description: "Fresh foliage and botanical subjects",
-    imageUrl: "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+    title: "Mint Green (#D4EFDF)",
+    description: "Fresh, soft mint green radiating serenity",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1529688530640-f20a6cb126c9",
+        alt: "Fresh mint leaves on a clean white background"
+      }
+    ],
     accent: "#D4EFDF"
   }
 ];
+
+
+const PhotoCard = ({ title, description, images, accent }: {title: string;  description: string;  images: { url: string; alt: string; }[];
+  accent: string; }) => (
+     <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow p-6 max-w-xl">
+    <div className="mb-4">
+      {images.map((image, index) => (
+        <div key={index} className="relative rounded-lg overflow-hidden bg-gray-100 h-[350px] w-full">
+          <Image
+            src={image.url}
+            alt={image.alt}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={index === 0}
+          />
+          <div 
+            className="absolute inset-0 mix-blend-color opacity-20"
+            style={{ backgroundColor: accent }}
+          />
+        </div>
+      ))}
+    </div>
+    <div className="space-y-2">
+      <h4 className="font-comfortaa font-semibold text-lg flex items-center gap-2">
+        {title}
+        <span 
+          className="inline-block w-4 h-4 rounded-full"
+          style={{ backgroundColor: accent }}
+        />
+      </h4>
+      <p className="text-gray-600 text-sm">{description}</p>
+    </div>
+  </div>
+);
+
+
 
   const IconCard = ({
     icon: Icon,
@@ -99,37 +155,6 @@ export function Graphics() {
       <p className="text-sm text-gray-600">{description}</p>
     </div>
   );
-
-  const PhotoCard = ({
-    title,
-    description,
-    imageUrl,
-    accent,
-  }: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    accent: string;
-  }) => (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div className="relative aspect-[3/2] overflow-hidden">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="object-cover w-full h-full"
-        />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundColor: accent }}
-        />
-      </div>
-      <div className="p-4">
-        <h4 className="font-comfortaa font-semibold text-lg mb-2">{title}</h4>
-        <p className="text-gray-600 text-sm">{description}</p>
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen flex flex-col">
       <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm sticky top-0 w-full z-50 shadow-sm">
@@ -227,7 +252,13 @@ export function Graphics() {
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {imageryGuidelines.map((photo, index) => (
-                      <PhotoCard key={index} {...photo} />
+                      <PhotoCard
+                      key={index}
+                      title={photo.title}
+                      description={photo.description}
+                      images={photo.images}
+                      accent={photo.accent}
+                      />
                     ))}
                   </div>
                 </div>
