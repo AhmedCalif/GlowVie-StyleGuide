@@ -56,7 +56,7 @@ export function Graphics() {
   ];
 const imageryGuidelines = [
   {
-    title: "Deep Navy (#0E233B)",
+    title: "Oxford Blue (#0E233B)",
     description: "Rich, deep navy conveying authority and depth",
     images: [
       {
@@ -71,7 +71,7 @@ const imageryGuidelines = [
     description: "Pure, ethereal columbia blue expressing clarity",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+        url: "https://columbia.scene7.com/is/image/ColumbiaSportswear2/1372111_490_f_om?wid=768&hei=806&v=1730099369",
         alt: "Clear sky with soft Columbia blue tones"
       }
     ],
@@ -82,18 +82,18 @@ const imageryGuidelines = [
     description: "Delicate lavender shade embodying tranquility",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1531870970999-0f1234e4e549",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkUkvIYuOonRLuzsXnfNtL4MFpmRTzZpQG_A&s",
         alt: "Soft lavender flowers in bloom"
       }
     ],
     accent: "#E6E1F3"
   },
   {
-    title: "Mint Green (#D4EFDF)",
+    title: "HoneyDew (#D4EFDF)",
     description: "Fresh, soft mint green radiating serenity",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1529688530640-f20a6cb126c9",
+        url: "https://i.pinimg.com/736x/75/e5/83/75e583a7209703533c85eb10a62fc9fa.jpg",
         alt: "Fresh mint leaves on a clean white background"
       }
     ],
