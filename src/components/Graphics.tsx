@@ -5,6 +5,9 @@ import { Footer } from "./Footer";
 import Image from "next/image";
 import React from "react";
 import { HomePageIcon, ProgressIcon, MascotIcon } from "./CustomSvgs";
+import { Button, buttonVariants } from "./ui/button";
+
+
 
 export function Graphics() {
   const navItems = [
@@ -33,85 +36,114 @@ export function Graphics() {
     </svg>
   );
 
-  const homePageIcon = () => {
-    return (
-      <Image
-        src={"/homepagelogo.svg"}
-        alt="HomePage logo"
-        width={100}
-        height={100}
-      ></Image>
-    );
-  };
-
   const iconGroups = [
     {
       title: "Icons",
       icons: [
         {
-          icon: MessageSquare,
-          label: "homepage icon",
-          description: "To naviagte to the homepage",
+          icon: HomePageIcon,
+          label: "Homepage Icon",
+          description: "To navigate to the homepage",
         },
         {
-          icon: Bell,
-          label: "Notifications",
-          description: "Important updates",
+          icon: ProgressIcon,
+          label: "Progress Icon",
+          description: "Progress Tracking",
         },
-        { icon: Calendar, label: "Calendar", description: "Event scheduling" },
-      ],
-    },
-    {
-      title: "Buttons",
-      icons: [
-        {
-          icon: MessageSquare,
-          label: "Messages",
-          description: "User communication",
-        },
-        {
-          icon: Bell,
-          label: "Notifications",
-          description: "Important updates",
-        },
-        { icon: Calendar, label: "Calendar", description: "Event scheduling" },
+        { icon: MascotIcon, label: "Mascot Icon", description: "For Mascot page" },
       ],
     },
   ];
+const imageryGuidelines = [
+  {
+    title: "Oxford Blue (#0E233B)",
+    description: "Rich, deep navy conveying authority and depth",
+    images: [
+      {
+        url: "https://savviformalwear.com/wp-content/uploads/2019/03/indigo_wedding_suit-1-scaled.jpg",
+        alt: "Deep navy blue abstract texture"
+      }
+    ],
+    accent: "#0E233B"
+  },
+  {
+    title: "Columbia Blue (#D6EAF8)",
+    description: "Pure, ethereal columbia blue expressing clarity",
+    images: [
+      {
+        url: "https://columbia.scene7.com/is/image/ColumbiaSportswear2/1372111_490_f_om?wid=768&hei=806&v=1730099369",
+        alt: "Clear sky with soft Columbia blue tones"
+      }
+    ],
+    accent: "#D6EAF8"
+  },
+  {
+    title: "Soft Lavender (#E6E1F3)",
+    description: "Delicate lavender shade embodying tranquility",
+    images: [
+      {
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkUkvIYuOonRLuzsXnfNtL4MFpmRTzZpQG_A&s",
+        alt: "Soft lavender flowers in bloom"
+      }
+    ],
+    accent: "#E6E1F3"
+  },
+  {
+    title: "HoneyDew (#D4EFDF)",
+    description: "Fresh, soft mint green radiating serenity",
+    images: [
+      {
+        url: "https://i.pinimg.com/736x/75/e5/83/75e583a7209703533c85eb10a62fc9fa.jpg",
+        alt: "Fresh mint leaves on a clean white background"
+      }
+    ],
+    accent: "#D4EFDF"
+  }
+];
 
-  const brandPhotos = [
-    {
-      title: "Casual Blue",
-      description: "Model wearing our signature navy blue casual wear",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#0E233B",
-    },
-    {
-      title: "Sky Essence",
-      description: "Street style featuring our sky blue palette",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#D6EAF8",
-    },
-    {
-      title: "Mint Harmony",
-      description: "Active wear in our refreshing mint tone",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#D4EFDF",
-    },
-    {
-      title: "Lavender Dreams",
-      description: "Evening wear showcasing our lavender accent",
-      imageUrl: "/api/placeholder/600/400",
-      accent: "#E6E1F3",
-    },
-  ];
+
+const PhotoCard = ({ title, description, images, accent }: {title: string;  description: string;  images: { url: string; alt: string; }[];
+  accent: string; }) => (
+     <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow p-6 max-w-xl">
+    <div className="mb-4">
+      {images.map((image, index) => (
+        <div key={index} className="relative rounded-lg overflow-hidden bg-gray-100 h-[350px] w-full">
+          <Image
+            src={image.url}
+            alt={image.alt}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={index === 0}
+          />
+          <div 
+            className="absolute inset-0 mix-blend-color opacity-20"
+            style={{ backgroundColor: accent }}
+          />
+        </div>
+      ))}
+    </div>
+    <div className="space-y-2">
+      <h4 className="font-comfortaa font-semibold text-lg flex items-center gap-2">
+        {title}
+        <span 
+          className="inline-block w-4 h-4 rounded-full"
+          style={{ backgroundColor: accent }}
+        />
+      </h4>
+      <p className="text-gray-600 text-sm">{description}</p>
+    </div>
+  </div>
+);
+
+
 
   const IconCard = ({
     icon: Icon,
     label,
     description,
   }: {
-    icon: LucideIcon;
+    icon: React.FC;
     label: string;
     description: string;
   }) => (
@@ -123,37 +155,6 @@ export function Graphics() {
       <p className="text-sm text-gray-600">{description}</p>
     </div>
   );
-
-  const PhotoCard = ({
-    title,
-    description,
-    imageUrl,
-    accent,
-  }: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    accent: string;
-  }) => (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div className="relative aspect-[3/2] overflow-hidden">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="object-cover w-full h-full"
-        />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundColor: accent }}
-        />
-      </div>
-      <div className="p-4">
-        <h4 className="font-comfortaa font-semibold text-lg mb-2">{title}</h4>
-        <p className="text-gray-600 text-sm">{description}</p>
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen flex flex-col">
       <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm sticky top-0 w-full z-50 shadow-sm">
@@ -210,10 +211,17 @@ export function Graphics() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {group.icons.map((icon, index) => (
                         <IconCard key={index} {...icon} />
-                      ))}
+                      ))} 
                     </div>
                   </div>
                 ))}
+
+
+                <h2 className="text-2xl 'font-comfortaa font-semibold mb-1 ">Buttons</h2>
+                 <p className=" font-comfortaa text-gray-800"> 
+                  For our app, this button will be the main button style to naviagte, and do something with, This button will have multiple colors symbolozing the CTA a user needs to do to navigate through our app
+                 </p>
+                 <Button variant="secondary" className="rounded-full bg-black text-white hover:bg-gray-800 mt-4">Button</Button>
 
                 <div className="mt-8 space-y-4">
                   <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">
@@ -243,8 +251,14 @@ export function Graphics() {
                     occasions.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {brandPhotos.map((photo, index) => (
-                      <PhotoCard key={index} {...photo} />
+                    {imageryGuidelines.map((photo, index) => (
+                      <PhotoCard
+                      key={index}
+                      title={photo.title}
+                      description={photo.description}
+                      images={photo.images}
+                      accent={photo.accent}
+                      />
                     ))}
                   </div>
                 </div>
@@ -257,3 +271,4 @@ export function Graphics() {
     </div>
   );
 }
+
