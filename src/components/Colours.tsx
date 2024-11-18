@@ -6,6 +6,8 @@ import Image from "next/image";
 import lavenderComparison from "./images/lavender_comparison.png";
 import mintComparison from "./images/mint_comparison.png";
 import skyComparison from "./images/sky_comparison.png";
+import loginExample from "./images/login_example.png";
+import homeExample from "./images/home_example.png";
 
 export function Colours() {
   const navItems = [
@@ -17,18 +19,10 @@ export function Colours() {
   ];
 
   const LogoSVG = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 200"
-      className="w-full h-full"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" className="w-full h-full">
       <circle cx="100" cy="100" r="90" fill="#0E233B" />
-      <path
-        d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z"
-        fill="#D6EAF8"
-        stroke="#E6E1F3"
-        strokeWidth="3"
-      />
+      <path d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z" 
+            fill="#D6EAF8" stroke="#E6E1F3" strokeWidth="3" />
       <circle cx="75" cy="75" r="5" fill="#D4EFDF" />
       <circle cx="125" cy="75" r="5" fill="#D4EFDF" />
     </svg>
@@ -56,6 +50,11 @@ export function Colours() {
     },
   ];
 
+  const exampleImages = [
+    { img: loginExample, alt: "Login Example", text: "Login Page Design" },
+    { img: homeExample, alt: "Home Example", text: "Home Page Design" }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#D6EAF8] to-[#E6E1F3]">
       <nav className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm fixed w-full z-50 shadow-sm">
@@ -70,7 +69,6 @@ export function Colours() {
             </div>
             <span className="font-bold text-xl text-[#D6EAF8]">GlowVie</span>
           </Link>
-
           <div className="flex-wrap gap-8 hidden md:flex">
             {navItems.map((item) => (
               <div key={item.href}>
@@ -124,10 +122,8 @@ export function Colours() {
             Colour Accessibility
           </h2>
           <p className="text-[#0E233B] text-l">
-            Our colour contrast is tested by both a figma plugin, and from the
-            website Coolors.
+            Our colour contrast is tested by both a Figma plugin and the website Coolors.
           </p>
-          {/* Accessibility Comparison Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contrastImages.map((item, index) => (
               <div
@@ -149,6 +145,14 @@ export function Colours() {
           <p className="text-[#0E233B] text-l">
             Examples of how the colour palette is applied to our app.
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {exampleImages.map((example, index) => (
+              <div key={index} className="flex flex-col items-center text-center space-y-4">
+                <Image src={example.img} alt={example.alt} className="rounded-md shadow-md" />
+                <p className="text-[#0E233B] text-base">{example.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
 
