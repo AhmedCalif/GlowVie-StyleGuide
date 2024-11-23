@@ -8,6 +8,8 @@ import mintComparison from "./images/mint_comparison.png";
 import skyComparison from "./images/sky_comparison.png";
 import loginExample from "./images/login_example.png";
 import homeExample from "./images/home_example.png";
+import goalExample from "./images/goals_example.png";
+import progressExample from "./images/progress_example.png";
 
 export function Colours() {
   const navItems = [
@@ -31,14 +33,14 @@ export function Colours() {
   const colors = [
     { name: "Navy Blue", hex: "#0E233B" },
     { name: "Light Sky", hex: "#D6EAF8" },
-    { name: "Lavender", hex: "#E6E1F3" },
-    { name: "Mint Green", hex: "#D4EFDF" }
+    { name: "Lavender", hex: "#461BB5" },
+    { name: "Mint Green", hex: "#4CAF50" }
   ];
 
   const contrastImages = [
     {
       img: lavenderComparison,
-      text: "These colours pass the contrast check for small and large text to a high degree at 12.43, ensuring visibility for everyone with different vision capabilities.",
+      text: "These colours pass the contrast check for small and large text at 8.15, ensuring visibility for everyone with different vision capabilities.",
     },
     {
       img: skyComparison,
@@ -46,13 +48,15 @@ export function Colours() {
     },
     {
       img: mintComparison,
-      text: "These colours pass the contrast check for small and large text to a high degree at 13.02, ensuring visibility for everyone with different vision capabilities.",
+      text: "These colours pass the contrast check for small and large text at 5.71, ensuring visibility for everyone with different vision capabilities.",
     },
   ];
 
   const exampleImages = [
     { img: loginExample, alt: "Login Example", text: "Login Page Design" },
-    { img: homeExample, alt: "Home Example", text: "Home Page Design" }
+    { img: homeExample, alt: "Home Example", text: "Home Page Design" },
+    { img: progressExample, alt: "Progress Example", text: "Progress Page Design" },
+    { img: goalExample, alt: "Goals Example", text: "Goal Page Design" }
   ];
 
   return (
