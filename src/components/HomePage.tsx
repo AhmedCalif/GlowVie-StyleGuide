@@ -13,23 +13,7 @@ export function HomePage() {
     { href: "/references", label: "References" },
   ];
 
-  const LogoSVG = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 200"
-      className="w-full h-full"
-    >
-      <circle cx="100" cy="100" r="90" fill="#0E233B" />
-      <path
-        d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z"
-        fill="#D6EAF8"
-        stroke="#E6E1F3"
-        strokeWidth="3"
-      />
-      <circle cx="75" cy="75" r="5" fill="#D4EFDF" />
-      <circle cx="125" cy="75" r="5" fill="#D4EFDF" />
-    </svg>
-  );
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -86,7 +70,7 @@ export function HomePage() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <img
+              <Image
                 src="/glowLogo.svg"
                 alt="GlowVie Logo"
                 className="w-full h-auto rounded-lg"

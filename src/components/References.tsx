@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "./Footer";
+import Image from "next/image";
 
 export function References() {
   const navItems = [
@@ -39,7 +40,7 @@ export function References() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10">
-              <img
+              <Image
                 src="/glowLogo.svg"
                 alt="GlowVie Logo"
                 className="w-full h-auto rounded-lg"
