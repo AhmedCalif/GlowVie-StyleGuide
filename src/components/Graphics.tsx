@@ -7,8 +7,6 @@ import React from "react";
 import { HomePageIcon, ProgressIcon, MascotIcon } from "./CustomSvgs";
 import { Button, buttonVariants } from "./ui/button";
 
-
-
 export function Graphics() {
   const navItems = [
     { href: "/logo", label: "Logo" },
@@ -50,93 +48,106 @@ export function Graphics() {
           label: "Progress Icon",
           description: "Progress Tracking",
         },
-        { icon: MascotIcon, label: "Mascot Icon", description: "For Mascot page" },
+        {
+          icon: MascotIcon,
+          label: "Mascot Icon",
+          description: "For Mascot page",
+        },
       ],
     },
   ];
-const imageryGuidelines = [
-  {
-    title: "Oxford Blue (#0E233B)",
-    description: "Rich, deep navy conveying authority and depth",
-    images: [
-      {
-        url: "https://savviformalwear.com/wp-content/uploads/2019/03/indigo_wedding_suit-1-scaled.jpg",
-        alt: "Deep navy blue abstract texture"
-      }
-    ],
-    accent: "#0E233B"
-  },
-  {
-    title: "Columbia Blue (#D6EAF8)",
-    description: "Pure, ethereal columbia blue expressing clarity",
-    images: [
-      {
-        url: "https://columbia.scene7.com/is/image/ColumbiaSportswear2/1372111_490_f_om?wid=768&hei=806&v=1730099369",
-        alt: "Clear sky with soft Columbia blue tones"
-      }
-    ],
-    accent: "#D6EAF8"
-  },
-  {
-    title: "Soft Lavender (#E6E1F3)",
-    description: "Delicate lavender shade embodying tranquility",
-    images: [
-      {
-        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkUkvIYuOonRLuzsXnfNtL4MFpmRTzZpQG_A&s",
-        alt: "Soft lavender flowers in bloom"
-      }
-    ],
-    accent: "#E6E1F3"
-  },
-  {
-    title: "HoneyDew (#D4EFDF)",
-    description: "Fresh, soft mint green radiating serenity",
-    images: [
-      {
-        url: "https://i.pinimg.com/736x/75/e5/83/75e583a7209703533c85eb10a62fc9fa.jpg",
-        alt: "Fresh mint leaves on a clean white background"
-      }
-    ],
-    accent: "#D4EFDF"
-  }
-];
+  const imageryGuidelines = [
+    {
+      title: "Oxford Blue (#0E233B)",
+      description: "Rich, deep navy conveying authority and depth",
+      images: [
+        {
+          url: "https://savviformalwear.com/wp-content/uploads/2019/03/indigo_wedding_suit-1-scaled.jpg",
+          alt: "Deep navy blue abstract texture",
+        },
+      ],
+      accent: "#0E233B",
+    },
+    {
+      title: "Columbia Blue (#D6EAF8)",
+      description: "Pure, ethereal columbia blue expressing clarity",
+      images: [
+        {
+          url: "https://columbia.scene7.com/is/image/ColumbiaSportswear2/1372111_490_f_om?wid=768&hei=806&v=1730099369",
+          alt: "Clear sky with soft Columbia blue tones",
+        },
+      ],
+      accent: "#D6EAF8",
+    },
+    {
+      title: "Soft Lavender (#E6E1F3)",
+      description: "Delicate lavender shade embodying tranquility",
+      images: [
+        {
+          url: "https://cdn130.picsart.com/353832347022201.jpg",
+          alt: "Soft lavender flowers in a serene garden",
+        },
+      ],
+      accent: "#E6E1F3",
+    },
+    {
+      title: "HoneyDew (#D4EFDF)",
+      description: "Fresh, soft mint green radiating serenity",
+      images: [
+        {
+          url: "https://i.pinimg.com/736x/75/e5/83/75e583a7209703533c85eb10a62fc9fa.jpg",
+          alt: "Fresh mint leaves on a clean white background",
+        },
+      ],
+      accent: "#D4EFDF",
+    },
+  ];
 
-
-const PhotoCard = ({ title, description, images, accent }: {title: string;  description: string;  images: { url: string; alt: string; }[];
-  accent: string; }) => (
-     <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow p-6 max-w-xl">
-    <div className="mb-4">
-      {images.map((image, index) => (
-        <div key={index} className="relative rounded-lg overflow-hidden bg-gray-100 h-[350px] w-full">
-          <Image
-            src={image.url}
-            alt={image.alt}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority={index === 0}
-          />
-          <div 
-            className="absolute inset-0 mix-blend-color opacity-20"
+  const PhotoCard = ({
+    title,
+    description,
+    images,
+    accent,
+  }: {
+    title: string;
+    description: string;
+    images: { url: string; alt: string }[];
+    accent: string;
+  }) => (
+    <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow p-6 max-w-xl">
+      <div className="mb-4">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="relative rounded-lg overflow-hidden bg-gray-100 h-[350px] w-full"
+          >
+            <Image
+              src={image.url}
+              alt={image.alt}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={index === 0}
+            />
+            <div
+              className="absolute inset-0 mix-blend-color opacity-20"
+              style={{ backgroundColor: accent }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="space-y-2">
+        <h4 className="font-comfortaa font-semibold text-lg flex items-center gap-2">
+          {title}
+          <span
+            className="inline-block w-4 h-4 rounded-full"
             style={{ backgroundColor: accent }}
           />
-        </div>
-      ))}
+        </h4>
+        <p className="text-gray-600 text-sm">{description}</p>
+      </div>
     </div>
-    <div className="space-y-2">
-      <h4 className="font-comfortaa font-semibold text-lg flex items-center gap-2">
-        {title}
-        <span 
-          className="inline-block w-4 h-4 rounded-full"
-          style={{ backgroundColor: accent }}
-        />
-      </h4>
-      <p className="text-gray-600 text-sm">{description}</p>
-    </div>
-  </div>
-);
-
-
+  );
 
   const IconCard = ({
     icon: Icon,
@@ -149,7 +160,7 @@ const PhotoCard = ({ title, description, images, accent }: {title: string;  desc
   }) => (
     <div className="bg-white/90 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
       <div className="bg-[#D6EAF8] p-3 rounded-full w-fit mb-3">
-        <Icon/>
+        <Icon />
       </div>
       <h4 className="font-comfortaa font-semibold mb-1">{label}</h4>
       <p className="text-sm text-gray-600">{description}</p>
@@ -211,17 +222,26 @@ const PhotoCard = ({ title, description, images, accent }: {title: string;  desc
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {group.icons.map((icon, index) => (
                         <IconCard key={index} {...icon} />
-                      ))} 
+                      ))}
                     </div>
                   </div>
                 ))}
 
-
-                <h2 className="text-2xl 'font-comfortaa font-semibold mb-1 ">Buttons</h2>
-                 <p className=" font-comfortaa text-gray-800"> 
-                  For our app, this button will be the main button style to naviagte, and do something with, This button will have multiple colors symbolozing the CTA a user needs to do to navigate through our app
-                 </p>
-                 <Button variant="secondary" className="rounded-full bg-black text-white hover:bg-gray-800 mt-4">Button</Button>
+                <h2 className="text-2xl 'font-comfortaa font-semibold mb-1 ">
+                  Buttons
+                </h2>
+                <p className=" font-comfortaa text-gray-800">
+                  For our app, this button will be the main button style to
+                  naviagte, and do something with, This button will have
+                  multiple colors symbolozing the CTA a user needs to do to
+                  navigate through our app
+                </p>
+                <Button
+                  variant="secondary"
+                  className="rounded-full bg-[#461BB5] text-white hover:bg-gray-800 mt-4"
+                >
+                  Button
+                </Button>
 
                 <div className="mt-8 space-y-4">
                   <h3 className="text-xl font-comfortaa font-bold text-[#0E233B]">
@@ -253,11 +273,11 @@ const PhotoCard = ({ title, description, images, accent }: {title: string;  desc
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {imageryGuidelines.map((photo, index) => (
                       <PhotoCard
-                      key={index}
-                      title={photo.title}
-                      description={photo.description}
-                      images={photo.images}
-                      accent={photo.accent}
+                        key={index}
+                        title={photo.title}
+                        description={photo.description}
+                        images={photo.images}
+                        accent={photo.accent}
                       />
                     ))}
                   </div>
@@ -271,4 +291,3 @@ const PhotoCard = ({ title, description, images, accent }: {title: string;  desc
     </div>
   );
 }
-

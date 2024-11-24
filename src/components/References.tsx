@@ -24,7 +24,7 @@ export function References() {
     {
       title: "Typography",
       description:
-        "GlowVie uses the Comfortaa font family across all platforms, chosen for its modern and approachable aesthetic. Maintain consistency in text hierarchy by following the set font sizes: Heading 1 at 36px for main titles, Heading 2 at 28px for section titles, and body text at 16px. The primary weights include Light (300) for subtleties, Regular (400) for body text, Medium (500) for emphasis, and Bold (700) for headings. Line spacing should be 1.5x the font size for optimal readability. Avoid mixing different font families to maintain a cohesive look.",
+        "GlowVie uses the Comfortaa font family across all platforms, chosen for its modern and approachable aesthetic. Maintain consistency in text hierarchy by following the set font sizes: Heading 1 at 36px for main titles, Heading 2 at 28px for section titles, and body text at 18px. The primary weights include Light (300) for subtleties, Regular (400) for body text, Medium (500) for emphasis, and Bold (700) for headings. Line spacing should be 1.5x the font size for optimal readability. Avoid mixing different font families to maintain a cohesive look.",
     },
     {
       title: "Graphics",
