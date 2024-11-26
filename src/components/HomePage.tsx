@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -14,6 +14,8 @@ export function HomePage() {
   ];
 
   
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,6 +59,7 @@ export function HomePage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Navigation Bar */}
       <motion.nav
         className="px-6 py-4 bg-[#0E233B] backdrop-blur-sm fixed w-full z-50 shadow-sm"
         initial={{ y: -100 }}
@@ -79,6 +82,28 @@ export function HomePage() {
             <span className="font-bold text-xl text-[#D6EAF8]">GlowVie</span>
           </Link>
 
+          {/* Hamburger Menu Button for Mobile */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-[#D6EAF8] p-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
+          {/* Desktop Menu */}
           <div className="flex-wrap gap-8 hidden md:flex">
             {navItems.map((item, index) => (
               <motion.div
@@ -102,6 +127,22 @@ export function HomePage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="absolute top-16 left-0 w-full bg-[#0E233B] p-4 md:hidden">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block py-2 text-[#D6EAF8] hover:text-[#D4EFDF] transition-colors"
+                  onClick={() => setIsMenuOpen(false)} // Close menu when clicking
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </motion.nav>
 
@@ -184,38 +225,6 @@ export function HomePage() {
           </motion.div>
         </motion.div>
       </main>
-
-      <div className="absolute inset-0 pointer-events-none">
-        {[
-          { top: "20", left: "20", size: "24", color: "#D6EAF8" },
-          { top: "40", right: "40", size: "32", color: "#E6E1F3" },
-          { bottom: "20", left: "1/4", size: "40", color: "#D4EFDF" },
-          { top: "1/3", right: "1/3", size: "28", color: "#0E233B" },
-        ].map((blob, index) => (
-          <motion.div
-            key={index}
-            className="absolute rounded-full blur-xl opacity-40"
-            style={{
-              top: blob.top,
-              left: blob.left,
-              right: blob.right,
-              width: `${blob.size}px`,
-              height: `${blob.size}px`,
-              backgroundColor: blob.color,
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.4, 0.2, 0.4],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              delay: index * 0.5,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
     </motion.div>
   );
 }
