@@ -1,11 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import { Bell, Calendar, MessageSquare, type LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Footer } from "./Footer";
 import Image from "next/image";
 import React from "react";
 import { HomePageIcon, ProgressIcon, MascotIcon } from "./CustomSvgs";
-import { Button, buttonVariants } from "./ui/button";
+import { Button } from "./ui/button";
 
 export function Graphics() {
   const navItems = [
@@ -15,25 +15,6 @@ export function Graphics() {
     { href: "/graphics", label: "Graphics" },
     { href: "/references", label: "References" },
   ];
-
-  const LogoSVG = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 200 200"
-      className="w-full h-full"
-    >
-      <circle cx="100" cy="100" r="90" fill="#0E233B" />
-      <path
-        d="M100 140 C100 140 60 110 60 80C60 60 75 50 90 50C95 50 100 52 100 52C100 52 105 50 110 50C125 50 140 60 140 80C140 110 100 140 100 140Z"
-        fill="#D6EAF8"
-        stroke="#E6E1F3"
-        strokeWidth="3"
-      />
-      <circle cx="75" cy="75" r="5" fill="#D4EFDF" />
-      <circle cx="125" cy="75" r="5" fill="#D4EFDF" />
-    </svg>
-  );
-
   const iconGroups = [
     {
       title: "Icons",
@@ -172,7 +153,7 @@ export function Graphics() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10">
-              <img
+              <Image
                 src="/glowLogo.svg"
                 alt="GlowVie Logo"
                 className="w-full h-auto rounded-lg"

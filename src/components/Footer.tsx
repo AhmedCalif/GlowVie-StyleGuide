@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
         <div className="h-16 flex items-center justify-center">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-white rounded-full">
-              <img
+              <Image
                 src="/glowLogo.svg"
                 alt="GlowVie Logo"
                 className="w-full h-auto rounded-lg"
